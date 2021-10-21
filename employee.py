@@ -157,7 +157,7 @@ class Employee:
         scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
         scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
 
-        self.employee=ttk.Treeview(table_frame,column=('id','name','num','dep','email','add','sal'))
+        self.employee=ttk.Treeview(table_frame,column=('id','name','dep','num','email','add','sal'))
 
         scroll_x.pack(side=BOTTOM,fill=X)
         scroll_y.pack(side=RIGHT,fill=Y)
@@ -167,11 +167,11 @@ class Employee:
 
         self.employee.heading('id',text='Employee Id')
         self.employee.heading('name',text='Name')
-        self.employee.heading('num',text='Number')
         self.employee.heading('dep',text='Department')
-        self.employee.heading('email',text='Email')
+        self.employee.heading('num',text='Number')
+        self.employee.heading('sal',text='Salary ') 
         self.employee.heading('add',text='Address ')
-        self.employee.heading('sal',text='Salary ')
+        self.employee.heading('email',text='Email')
 
         self.employee['show']='headings'
 
@@ -179,9 +179,9 @@ class Employee:
         self.employee.column("name",width=50)
         self.employee.column("dep",width=50)
         self.employee.column("num",width=50)
-        self.employee.column("email",width=50)
-        self.employee.column("add",width=50)
         self.employee.column("sal",width=50)
+        self.employee.column("add",width=50)
+        self.employee.column("email",width=50)
  
         self.employee.pack(fill=BOTH,expand=1)
 
@@ -201,11 +201,13 @@ class Employee:
                 my_cursor.execute('insert into employee values(%s,%s,%s,%s,%s,%s,%s)',(
                                                                                                 self.var_id.get(),
                                                                                                 self.var_name.get(),
-                                                                                                self.var_number.get(),
                                                                                                 self.var_dept.get(),
-                                                                                                self.var_email.get(),
+                                                                                                self.var_number.get(),
+                                                                                                self.var_salary.get(),
                                                                                                 self.var_address.get(),
-                                                                                                self.var_salary.get()
+                                                                                                self.var_email.get(),
+                                                                                               
+                                                                                               
                                                                                             ))
 
                 conn.commit()
